@@ -114,12 +114,13 @@ const noteful = (function () {
   function handleNoteItemClick() {
     $('.js-notes-list').on('click', '.js-note-link', event => {
       event.preventDefault();
-
+      
       const noteId = getNoteIdFromElement(event.currentTarget);
-
+      //console.log(noteId);
       api.details(`/v2/notes/${noteId}`)
         .then((response) => {
           store.currentNote = response;
+          //console.log(store.currentNote);
           render();
         });
     });
